@@ -1,4 +1,4 @@
-import kivy
+import kivy 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.clock import Clock
@@ -13,6 +13,16 @@ class groot(ScreenManager):
         # self.other_client = info() 
         # self.my = self.n.getP()
         self.player = Player()
+
+        self.player_data = ''
+        try:
+            self.player_data = open('player_data.bin','rb')
+            self.player = pickle.load(self.player_data)
+        except FileNotFoundError:
+            self.player_data = open('player_data.bin','wb')
+            pickle.dump(self.player,self.player_data)
+        self.player_data.close()
+
         Clock.schedule_interval(self.update,0.0167)  
 
         # basically setting the fps ...60 fps ~ 1 frame  / 0.0167 ms ...i think i right...hoefully
@@ -24,10 +34,21 @@ class groot(ScreenManager):
     # dt is a special variable by kivy thats passed to the callback funcs initiated by schedule interval func...apne kaam ka nhi...
     def update(self,dt):                             # use this to update every value on screen ;-;
         # self.ids.id_of_widget.widget_attribute   ...for acessing the widget attributes in kv file
-        self.ids.butt1.text = self.player.username
+        self.ids.butt1.text = self.player.username + ' ' + str(self.player.clicks)
+        try:
+            self.player_data = open('player_data.bin','wb')
+            pickle.dump(self.player,self.player_data)
+            self.player_data.close()
+        except:
+            pass
+
 
     def roll(self):
         pass
+    
+    # testing file updation...fkin works...!!!
+    def clicked(self):
+        self.player.clicks = (self.player.clicks+1)%20
 
 
 
