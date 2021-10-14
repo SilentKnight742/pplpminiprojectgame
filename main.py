@@ -1,6 +1,7 @@
 import kivy 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
+from kivy.core.audio import SoundLoader
 from kivy.clock import Clock
 from game import *
 import pickle
@@ -49,6 +50,9 @@ class groot(ScreenManager):
     # testing file updation...fkin works...!!!
     def clicked(self):
         self.player.clicks = (self.player.clicks+1)%20
+        snd = SoundLoader.load('click.wav')
+        if snd:
+            snd.play()
 
 
 
