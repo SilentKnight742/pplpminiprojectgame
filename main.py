@@ -13,46 +13,58 @@ class groot(ScreenManager):
         # self.n = Client()
         # self.other_client = info() 
         # self.my = self.n.getP()
+
+        # player object initiation
         self.player = Player()
 
-        self.player_data = ''
+        # loading all the required sounds
+        self.clik_snd = SoundLoader.load('resc/sounds/click.wav')
+
+        
+        
+    def acc(self):
         try:
-            self.player_data = open('player_data.bin','rb')
-            self.player = pickle.load(self.player_data)
+            player_data = open('player_data.bin','rb')
+            self.player = pickle.load(player_data)
+            player_data.close()
+            return True
         except FileNotFoundError:
-            self.player_data = open('player_data.bin','wb')
-            pickle.dump(self.player,self.player_data)
-        self.player_data.close()
-
-        Clock.schedule_interval(self.update,0.0167)  
-
+            pass
+            # print(';-;')
+        return False
+        
+    def starto(self):
+        Clock.schedule_interval(self.update,0.0167)
         # basically setting the fps ...60 fps ~ 1 frame  / 0.0167 ms ...i think i right...hoefully
         # more like we'll keep updating the file where we store player data and the data we show on screen around 60 times in a sec...yeh number ke saath thoda experiment krke dekhenge
         # kabhi koi abruptly app close bhi kr diya toh stats lose nhi hoga...we'll pickle the player object and store it in a .bin file
-        # even i'll have to look it up on how to do it correctly...file handling revision
         # demn itna comments kabhi nhi likha...
 
     # dt is a special variable by kivy thats passed to the callback funcs initiated by schedule interval func...apne kaam ka nhi...
     def update(self,dt):                             # use this to update every value on screen ;-;
         # self.ids.id_of_widget.widget_attribute   ...for acessing the widget attributes in kv file
-        self.ids.butt1.text = self.player.username + ' ' + str(self.player.clicks)
+        # self.ids.butt1.text = self.player.username + ' ' + str(self.player.clicks)
         try:
-            self.player_data = open('player_data.bin','wb')
-            pickle.dump(self.player,self.player_data)
-            self.player_data.close()
+            player_data = open('player_data.bin','wb')
+            pickle.dump(self.player,player_data)
+            player_data.close()
         except:
-            pass
+            print('missed')
+        self.ids.butt2.text = self.player.username
 
-
-    def roll(self):
-        pass
     
-    # testing file updation...fkin works...!!!
+
+
     def clicked(self):
-        self.player.clicks = (self.player.clicks+1)%20
-        snd = SoundLoader.load('click.wav')
-        if snd:
-            snd.play()
+        # self.player.clicks = (self.player.clicks+1)%20
+        # if self.player.clicks%2==0:
+        #     self.ids.butt1.background_normal = 'resc/images/groot.png'
+        #     self.ids.butt1.text = 'i am groot'
+        # else:
+        #     self.ids.butt1.background_normal = 'resc/images/dio.png'
+        #     self.ids.butt1.text = 'dio da'
+        if self.clik_snd:
+            self.clik_snd.play()
 
 
 
