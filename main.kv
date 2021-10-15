@@ -3,13 +3,55 @@
         name: 'start_screen'
         FloatLayout:
             Button: 
-                id : butt1
-                text: 'kuch bhi text rakho idhar farak nhi padta...apna update func in main.py would update it ;)'
+                id: butt1
+                text: 'start'
+                font_size: 0.13*self.width
+                size_hint: 0.5,0.17
+                pos_hint: {'x':0.25, 'y':0.3}
                 on_release:
+                    app.root.transition.direction = 'left'
+                    if root.acc(): root.starto(); app.root.current = 'game_screen'
+                    else: app.root.current = 'acc_screen'
+
+    Screen:
+        name: 'acc_screen'
+        FloatLayout:
+            TextInput:
+                id: txinp1
+                text: ''
+                font_size: 0.13*self.width
+                size_hint: 0.5,0.17
+                pos_hint: {'x':0.25, 'y':0.7}
+                focus: True
+
+            Button: 
+                id: butt2
+                text: 'login'
+                font_size: 0.13*self.width
+                size_hint: 0.5,0.17
+                pos_hint: {'x':0.25, 'y':0.3}
+                on_release:
+                    root.player.username = root.ids.txinp1.text
                     root.clicked()
+                    root.starto()
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'game_screen'
+                
         
     Screen:
         name: 'game_screen'     # yaha pe apne cards dikhenge, stats dikhenge
+        FloatLayout:
+            Button:
+                id: butt2
+               # text: 'ok workd'
+               # text: root.player.username
+                font_size: 0.13*self.width
+                size_hint: 0.5,0.17
+                pos_hint: {'x':0.25, 'y':0.3}
+                on_release:
+                    root.clicked()
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'start_screen'
 
 # i'm thinking game ko landscape mode me lock kr denge...yeh ek baar test krna hai tho
 # aur bhi bhot screens hai...app ka structure bhi ek baar decide krna hai 
