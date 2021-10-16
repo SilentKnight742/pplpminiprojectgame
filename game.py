@@ -71,7 +71,7 @@ class Player:
         return True if i in self.skills.keys() else False
 
     def take_quiz(self):
-        return que_dic[random.randint(1,49)]
+        return que_lst[random.randint(1,49)]
     
     def quiz_reward(self):
         self.energy += math.floor(200*(1+self.fame))
