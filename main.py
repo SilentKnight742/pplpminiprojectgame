@@ -167,8 +167,9 @@ class groot(ScreenManager):
 
 
     def roll(self):
-        self.newId = self.player.rng()
-        if self.player.lang_exists(self.newId):
+        self.newID = self.player.rng()
+        print(self.newID)
+        if self.player.lang_exists(self.newID):
             self.ids.burn_butt.disabled = False
             self.ids.keep_butt.disabled = False
             self.ids.rolled_to_game.disabled = True
@@ -178,7 +179,7 @@ class groot(ScreenManager):
             self.ids.burn_butt.disabled = True
             self.ids.rolled_to_game.disabled = False
             self.ids.rolled_card_label.text = 'Yay! you got a new card'
-            self.player.add(self.newId)
+            self.player.add(self.newID)
             self.player.energy -= 300
         k = lang_lst[self.newID]
         self.ids.rolled_card_img.source = 'resc/images/' + k.img_name
