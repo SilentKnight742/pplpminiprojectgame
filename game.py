@@ -17,8 +17,8 @@ class Player:
         self.fame = 0.0
         self.lvl = 1
 
-        self.langs = {5:lang('dio da','dio.png',20,50), 2:lang('i am groot','groot.png',30,40)}
-        self.lang_ind = [5,2]
+        self.langs = {}
+        self.lang_ind = []
         self.skills = {}
         self.skill_ind = []
 
@@ -36,11 +36,10 @@ class Player:
     # yaha pe game functionalities
     # i is the id of lang card to acess it from lang_lst
     def rng(self):
-        if 1 == random.choices((1,2),weights=(30,70)):
-            return random.randint(0,4)
+        if [1] == random.choices((1,2),cum_weights=(3,10)):
+            return random.randint(0,high_ranks-1)
         else:
-            return random.randint(5,28)
-        # return 0
+            return random.randint(high_ranks,len(lang_lst)-1)
 
     def lang_exists(self,i):
         return True if i in self.langs.keys() else False
@@ -70,8 +69,8 @@ class Player:
         return True if i in self.skills.keys() else False
 
     def take_quiz(self):
-        return que_lst[random.randint(0,48)]
-        # return que_lst[0]
+        # return que_lst[random.randint(0,48)]
+        return que_lst[0]
     
     def quiz_reward(self):
         self.energy += math.floor(200*(1+self.fame))
