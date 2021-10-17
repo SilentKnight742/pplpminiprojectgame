@@ -64,7 +64,7 @@ skill_lst = [
     skill('Programming Languages','Programming_Languages.png',0.5,100),
     skill('Data Science','Data_Science.jpg',0.5,100),
     skill('Digital marketing','Digital_marketing.jpg',0.5,100),
-    skill('UI/UX Development','UI/UX_Development.jpg',0.5,100),
+    skill('UI/UX Development','UI_UX_Development.jpg',0.5,100),
     skill('Cyber Security','Cyber_Security.jpg',0.5,100),
     skill('Project Management','Project_Management.jpg',0.5,100),
     skill('Open Source Contributions','Open_Source_Contributions.jpg',0.5,100),
