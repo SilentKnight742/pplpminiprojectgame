@@ -18,7 +18,6 @@ class lang:
         # iske bhi kya kya stats hone chayiye player stats ka decide krne ke baad pata chale
 class skill:
     def __init__(self,*args):
-        self.bought = False
         self.name = args[0]
         self.img_name = args[1]
         self.skill_fame = args[2]
