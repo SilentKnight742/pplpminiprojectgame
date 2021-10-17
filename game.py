@@ -36,12 +36,11 @@ class Player:
     # yaha pe game functionalities
     # i is the id of lang card to acess it from lang_lst
     def rng(self):
-        self.energy -= 300
-        # if 1 == random.choices((1,2),weights=(30,70)):
-        #     return random.randint(0,4)
-        # else:
-        #     return random.randint(5,28)
-        return 0
+        if 1 == random.choices((1,2),weights=(30,70)):
+            return random.randint(0,4)
+        else:
+            return random.randint(5,28)
+        # return 0
 
     def lang_exists(self,i):
         return True if i in self.langs.keys() else False
@@ -71,7 +70,8 @@ class Player:
         return True if i in self.skills.keys() else False
 
     def take_quiz(self):
-        return que_lst[random.randint(1,49)]
+        return que_lst[random.randint(0,48)]
+        # return que_lst[0]
     
     def quiz_reward(self):
         self.energy += math.floor(200*(1+self.fame))
