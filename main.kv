@@ -5,7 +5,10 @@
             Button: 
                 id: butt1
                 text: 'start'
-                font_size: 0.13*self.width
+                # text_size: self.size
+                halign: 'center'
+                valign: 'center'
+                font_size: 0.1*self.width
                 size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.3}
                 on_release:
@@ -21,16 +24,21 @@
             TextInput:
                 id: txinp1
                 text: ''
-                font_size: 0.13*self.width
-                size_hint: 0.5,0.12
+                font_size: 0.1*self.width
+                size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.7}
                 focus: True
+                #text_size: self.size
                 halign: 'center'
+                multiline: False
 
             Button: 
                 id: butt2
                 text: 'login'
-                font_size: 0.13*self.width
+                font_size: 0.1*self.width
+                # text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.3}
                 on_release:
@@ -128,6 +136,9 @@
                     id: game_lang_card_stat
                     color: 1,0,1,1
                     text: 'hoho'
+                    text_size: self.size
+                    halign: 'center'
+                    valign: 'center'
                    # canvas.before:
                     #    Color:
                      #       rgba: 0,1,0,1
@@ -188,12 +199,9 @@
                     id: rolled_card_stat
                     color: 1,0,1,1
                     text: 'hoho'
-                    canvas.before:
-                        Color:
-                            rgba: 0,1,0,1
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
+                    text_size: self.size
+                    halign: 'center'
+                    valign: 'center'
                 
 
 
@@ -250,12 +258,9 @@
                 size_hint: 0.7, 0.2
                 color: 1,0,1,1
                 text: 'hoho'
-                canvas.before:
-                    Color:
-                        rgba: 0,1,0,1
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
 
 
     Screen:
@@ -272,14 +277,10 @@
                 id: result_label
                 pos_hint: {'x':0.17, 'y':0.6}
                 size_hint: 0.7, 0.2
-                color: 1,0,1,1
                 text: 'hoho'
-                canvas.before:
-                    Color:
-                        rgba: 0,1,0,1
-                    Rectangle:
-                        size: self.size
-                        pos: self.pos
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
             
 
 
@@ -325,19 +326,16 @@
                 size_hint_y: 0.5
                 Image: 
                     id: skill_card_img
-                    source: 'dio.png'
+                    source: 'resc/images/dio.png'
                     allow_stretch: True
                     keep_ratio: False
                 Label:
                     id: skill_card_stat
                     color: 1,0,1,1
                     text: 'hoho'
-                    canvas.before:
-                        Color:
-                            rgba: 0,1,0,1
-                        Rectangle:
-                            size: self.size
-                            pos: self.pos
+                    text_size: self.size
+                    halign: 'center'
+                    valign: 'center'
                 
 
 
