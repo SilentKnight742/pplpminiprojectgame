@@ -55,7 +55,7 @@ class groot(ScreenManager):
 
     # the update func is for updating time, player_data file and some info displayed on screen
     def starto(self):
-        Clock.schedule_interval(self.update,0.0167)
+        Clock.schedule_interval(self.update,0.01)
         # basically setting the fps ...60 fps ~ 1 frame  / 0.0167 ms ...i think i right...hoefully
         # more like we'll keep updating the file where we store player data and the data we show on screen around 60 times in a sec...
       
@@ -122,7 +122,7 @@ class groot(ScreenManager):
         # updating skill screen
         if gr.current == 'skill_screen':
             k = skill_lst[self.tempID2]
-            self.ids.skill_card_img.source = 'resc/images/' + k.img_name
+            # self.ids.skill_card_img.source = 'resc/images/' + k.img_name
             self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
             if self.tempID2==0:
                 self.ids.skill_prev_butt.disabled = True
@@ -197,9 +197,11 @@ class groot(ScreenManager):
     def set_result(self,f):
         if f==1:
             self.ids.result_label.text = 'Correct Answer'
+            self.ids.result_label.color = [0,1,0,1]
             self.player.quiz_reward()
         else:
             self.ids.result_label.text = 'Wrong Answer'
+            self.ids.result_label.color = [1,0,0,1]
 
 
 
