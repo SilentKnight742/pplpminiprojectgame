@@ -29,13 +29,13 @@ class skill:
 # bhot kuch info nikalna padega...
 lang_lst = [
     lang('Python','Python.jpg',20,50),
-    lang('Java','Java.jpg',20,50),
     lang('Javascript','Javascript.jpg',20,50),
-    lang('C#','C#.jpg',20,50),
-    lang('C','C.jpg',20,50),
     lang('C++','C++.jpg',20,50),
-    lang('PHP','PHP.jpg',20,50),
+    lang('C','C.jpg',20,50),
+    lang('Java','Java.jpg',20,50),
+    lang('C#','C#.jpg',20,50),
     lang('R','R.jpg',20,50),
+    lang('PHP','PHP.jpg',20,50), 
     lang('Objective C','ObjectiveC.jpg',20,50),
     lang('Typescript','typescript.jpg',20,50),
     lang('Swift','swift.jpg',20,50),
