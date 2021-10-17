@@ -72,6 +72,8 @@
                 size_hint: 0.15, 0.2
                 on_release:
                     root.qz_reset()
+                    root.set_que()
+                    app.root.current = 'quiz_screen'
             
             Button:
                 id: dly_butt
@@ -150,8 +152,9 @@
                 text: 'burn'
                 on_release:
                     root.player.burn(root.newID)
+                    root.player.energy -= 300
                     app.root.current = 'game_screen'
-            
+
             Button:
                 id: keep_butt
                 pos_hint: {'x':0.27, 'y':0.05}
@@ -159,8 +162,9 @@
                 text: 'keep'
                 on_release:
                     root.player.lvl_up_card(root.newID)
+                    root.player.energy -= 300
                     app.root.current = 'game_screen'
-            
+          
             Button:
                 id: rolled_to_game
                 text: 'back'
@@ -200,30 +204,48 @@
                 id: opt1
                 pos_hint: {'x':0.25, 'y':0.35}
                 size_hint: 0.2, 0.15
+                on_release: 
+                    if root.que.ans==1: root.set_result(1)
+                    else: root.set_result(0)
+                    app.root.current = 'result_screen'
             
             Button:
                 id: opt2
                 pos_hint: {'x':0.62, 'y':0.35}
                 size_hint: 0.2, 0.15
+                on_release: 
+                    if root.que.ans==2: root.set_result(1)
+                    else: root.set_result(0)
+                    app.root.current = 'result_screen'
 
             Button:
                 id: opt3
                 pos_hint: {'x':0.25, 'y':0.1}
                 size_hint: 0.2, 0.15
+                on_release: 
+                    if root.que.ans==3: root.set_result(1)
+                    else: root.set_result(0)
+                    app.root.current = 'result_screen'
             
             Button:
                 id: opt4
                 pos_hint: {'x':0.62, 'y':0.1}
                 size_hint: 0.2, 0.15
+                on_release: 
+                    if root.que.ans==4: root.set_result(1)
+                    else: root.set_result(0)
+                    app.root.current = 'result_screen'
             
             Button:
                 id: quiz_to_game
                 text: 'back'
                 pos_hint: {'x':0.02, 'y':0.86}
                 size_hint: 0.1, 0.1
+                on_release:
+                    app.root.current = 'game_screen'
         
             Label:
-                id: lang_card_stat
+                id: que_label
                 pos_hint: {'x':0.17, 'y':0.6}
                 size_hint: 0.7, 0.2
                 color: 1,0,1,1
@@ -239,6 +261,26 @@
     Screen:
         name: 'result_screen'
         FloatLayout:
+            Button:
+                id: result_to_game
+                text: 'back'
+                pos_hint: {'x':0.02, 'y':0.86}
+                size_hint: 0.1, 0.1
+                on_release:
+                    app.root.current = 'game_screen'
+            Label:
+                id: result_label
+                pos_hint: {'x':0.17, 'y':0.6}
+                size_hint: 0.7, 0.2
+                color: 1,0,1,1
+                text: 'hoho'
+                canvas.before:
+                    Color:
+                        rgba: 0,1,0,1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+            
 
 
     Screen:
@@ -263,6 +305,7 @@
                 id: buy_skill_butt
                 pos_hint: {'x':0.445, 'y':0.05}
                 size_hint: 0.15, 0.2
+                text: 'Buy'
                 on_release:
                     root.player.buy_skill(root.tempID2)
             
@@ -314,7 +357,7 @@
                 pos_hint: {'x':0.17, 'y':0.3}
                 size_hint: 0.7, 0.5
                 color: 1,0,1,1
-                text: 'hoho'
+                text: 'Dev Team:\nAniket Inamdar\nApoorv Chitnis\nAshutosh Mishra\nAtharva Dharmik\nBiju Saji\nTejaswini Joshi'
               #  canvas.before:
                #     Color:
                 #        rgba: 0,1,0,1
