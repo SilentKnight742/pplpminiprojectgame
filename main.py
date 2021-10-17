@@ -29,6 +29,10 @@ class groot(ScreenManager):
         self.new = True
         self.newID = 0
 
+        # temp var for current que obj
+        self.que = 0
+        self.correct = True
+
         # end of root construtor
 
 
@@ -131,21 +135,7 @@ class groot(ScreenManager):
             if self.player.skill_exists(self.tempID2) or self.player.pp<k.cost:
                 self.ids.buy_skill_butt.disabled = True
             else:
-                self.ids.buy_skill_butt.disabled = False
-
-        
-        # updating rolled screen
-        if gr.current == 'rolled_card_screen':
-            if not self.new:
-                self.ids.burn_butt.disabled = False
-                self.ids.keep_butt.disabled = False
-                self.ids.rolled_to_game.disabled = True
-                self.ids.rolled_card_label.text = 'You already have this card'
-            else:
-                self.ids.keep_butt.disabled = True
-                self.ids.burn_butt.disabled = True
-                self.ids.rolled_to_game.disabled = False
-                self.ids.rolled_card_label.text = 'Yay! you got a new card'
+                self.ids.buy_skill_butt.disabled = False           
 
 
 
@@ -175,6 +165,43 @@ class groot(ScreenManager):
         self.player.qz_last_time_rec = time.time()
 
 
+
+    def roll(self):
+        self.newId = self.player.rng()
+        if self.player.lang_exists(self.newId):
+            self.ids.burn_butt.disabled = False
+            self.ids.keep_butt.disabled = False
+            self.ids.rolled_to_game.disabled = True
+            self.ids.rolled_card_label.text = 'You already have this card'
+        else:
+            self.ids.keep_butt.disabled = True
+            self.ids.burn_butt.disabled = True
+            self.ids.rolled_to_game.disabled = False
+            self.ids.rolled_card_label.text = 'Yay! you got a new card'
+            self.player.add(self.newId)
+            self.player.energy -= 300
+        k = lang_lst[self.newID]
+        self.ids.rolled_card_img.source = 'resc/images/' + k.img_name
+        self.ids.rolled_card_stat.text = 'Name: ' + k.name + '\nLevel: ' + str(k.card_lvl) + '\nExp: +' + str(k.card_exp)
+
+
+    def set_que(self):
+        self.que = self.player.take_quiz()
+        self.ids.que_label.text = self.que.ques
+        self.ids.opt1.text = self.que.opt[0]
+        self.ids.opt2.text = self.que.opt[1]
+        self.ids.opt3.text = self.que.opt[2]
+        self.ids.opt4.text = self.que.opt[3]
+
+    def set_result(self,f):
+        if f==1:
+            self.ids.result_label.text = 'Correct Answer'
+            self.player.quiz_reward()
+        else:
+            self.ids.result_label.text = 'Wrong Answer'
+
+
+
     def clicked(self):
         if self.clik_snd:
             self.clik_snd.play()
@@ -185,17 +212,6 @@ class groot(ScreenManager):
         # else:
         #     self.ids.butt1.background_normal = 'resc/images/dio.png'
         #     self.ids.butt1.text = 'dio da'
-
-    def roll(self):
-        self.newId = self.player.rng()
-        if self.player.lang_exists(self.newId):
-            self.new = False
-        else:
-            self.new = True
-            self.player.add(self.newId)
-
-
-
 
         
 
