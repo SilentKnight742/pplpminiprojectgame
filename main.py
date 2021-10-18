@@ -122,7 +122,7 @@ class groot(ScreenManager):
         # updating skill screen
         if gr.current == 'skill_screen':
             k = skill_lst[self.tempID2]
-            # self.ids.skill_card_img.source = 'resc/images/' + k.img_name
+            self.ids.skill_card_img.source = 'resc/images/' + k.img_name
             self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
             if self.tempID2==0:
                 self.ids.skill_prev_butt.disabled = True
