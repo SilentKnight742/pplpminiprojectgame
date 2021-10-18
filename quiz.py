@@ -41,5 +41,12 @@ que_lst = [
     quest('Software that is available but has limitations is called?',['Shareware','Freeware','Open Source','Closed Source'],1),
     quest('Which of the following lists the evolution of programming languages in the correct order?',['machine, assembler, procedural, non-procedural, object oriented','procedural, non-procedural, object oriented, machine, assembler','machine, procedural, assembler, non-procedural, object oriented','machine, assembler, object oriented, procedural, non procedural'],1),
     quest('Software that is restricted on it\'s use or modifications is called?',['Shareware','Freeware','Open Source','Closed Source'],4),
-    quest('Which of the following programming language types was created first?',['procedural','machine','object oriented','assembler'],2)
+    quest('Which of the following programming language types was created first?',['procedural','machine','object oriented','assembler'],2),
+    quest('Software that allows modification in all cases is called?',['Shareware','Freeware','Open Source','Closed Source'],3),
+    quest('What does binary code mean?',['a coding system using the digits 0 and 1','a coding system using the digits 0 to 9','1000100100','code.org'],1),
+    quest('Why is binary code used?',['harder to hack into','makes computer run faster','since it was the first code ever invented','because...why not?'],2),
+    quest('Programming languages give computers instructions',['True','False'],2),
+    quest('Python is a clear and powerful ... oriented language',['software','snake','object','source'],3),
+    quest('What is programming?',['Creating a calendar of events','A way of speaking to aliens and robots','A list of activities','Writing instructions for a digital tool'],4),
+    quest('Binary numbers are usually expressed in groups of ... bit(s)',['1','2','8','10'],3)
 ]
