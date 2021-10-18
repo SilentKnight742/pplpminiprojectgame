@@ -53,11 +53,13 @@ class Player:
         k = math.floor(self.langs[i].card_exp*self.langs[i].card_lvl/(self.langs[i].card_lvl-1))
         self.langs[i].card_exp += k
         self.exp += k
+        self.set_lvl()
 
     def add(self,i):
         self.langs[i] = copy.deepcopy(lang_lst[i])
         self.lang_ind.append(i)
         self.exp += self.langs[i].card_exp
+        self.set_lvl()
 
     def buy_skill(self,i):
         self.skills[i] = copy.deepcopy(skill_lst[i])
@@ -69,8 +71,20 @@ class Player:
         return True if i in self.skills.keys() else False
 
     def take_quiz(self):
-        # return que_lst[random.randint(0,48)]
-        return que_lst[0]
+        return que_lst[random.randint(0,len(que_lst)-1)]
+        # return que_lst[0]
+    
+    def set_lvl(self):
+        if self.exp<100:
+            self.lvl = 1
+        elif self.exp<1000:
+            self.lvl = 2
+        elif self.exp<1500:
+            self.lvl = 3
+        elif self.exp<2000:
+            self.lvl = 4
+        elif self.exp<3000:
+            self.lvl = 5
     
     def quiz_reward(self):
         self.energy += math.floor(200*(1+self.fame))
