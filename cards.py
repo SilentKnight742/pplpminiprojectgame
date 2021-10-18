@@ -61,21 +61,21 @@ lang_lst = [
 
 
 skill_lst = [
-    skill('Programming Languages','Programming_Languages.png',0.5,100),
-    skill('Data Science','Data_Science.jpg',0.5,100),
-    skill('Digital marketing','Digital_marketing.jpg',0.5,100),
-    skill('UI/UX Development','UI_UX_Development.jpg',0.5,100),
-    skill('Cyber Security','Cyber_Security.jpg',0.5,100),
-    skill('Project Management','Project_Management.jpg',0.5,100),
-    skill('Open Source Contributions','Open_Source_Contributions.jpg',0.5,100),
-    skill('Software Development','Software_Development.jpg',0.5,100),
+    skill('Programming Languages','programminglanguages.jpg',0.5,100),
+    skill('Data Science','datascience2.jpg',0.5,100),
+    skill('Digital marketing','digitalmarketing.jpg',0.5,100),
+    skill('UI/UX Development','UXUI dev.jpg',0.5,100),
+    skill('Cyber Security','cybersec.jpg',0.5,100),
+    skill('Project Management','projectmanagement.jpg',0.5,100),
+    skill('Open Source Contributions','opensourcecontributions.jpg',0.5,100),
+    skill('Software Development','softwaredev.jpg',0.5,100),
     skill('Technical Writing','Technical_Writing.jpg',0.5,100),
-    skill('Mathematics','Mathematics.jpg',0.5,100),
-    skill('Problem Solving','Programming_Languages.jpg',0.5,100),
-    skill('Coding','Coding.jpg',0.5,100),
-    skill('Experimentation','Experimentation.jpg',0.5,100),
-    skill('Computer and technology knowledge','Computer_and_technology_knowledge.jpg',0.5,100),
-    skill('Computer hardware engineering','Computer_hardware_engineering.jpg',0.5,100),
-    skill('Data analysis','Data_analysis.jpg',0.5,100),
-    skill('Information systems management','Information_systems_management.jpg',0.5,100)
+    skill('Mathematics','mathematics.jpg',0.5,100),
+    skill('Problem Solving','problemsolving.jpg',0.5,100),
+    skill('Coding','coding.jpg',0.5,100),
+    skill('Experimentation','experimentation1.jpg',0.5,100),
+    skill('Computer and technology knowledge','computerandtechnologyknowledge.jpg',0.5,100),
+    skill('Computer hardware engineering','computerhardwareengineering.jpg',0.5,100),
+    skill('Data analysis','dataanalysis.jpg',0.5,100),
+    skill('Information systems management','informationsystemsmanagement.jpg',0.5,100)
 ]
