@@ -122,7 +122,7 @@ class groot(ScreenManager):
         # updating skill screen
         if gr.current == 'skill_screen':
             k = skill_lst[self.tempID2]
-            self.ids.skill_card_img.source = 'resc/images/' + k.img_name
+            # self.ids.skill_card_img.source = 'resc/images/' + k.img_name
             self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
             if self.tempID2==0:
                 self.ids.skill_prev_butt.disabled = True
@@ -196,7 +196,7 @@ class groot(ScreenManager):
 
     def set_result(self,f):
         if f==1:
-            self.ids.result_label.text = 'Correct Answer'
+            self.ids.result_label.text = 'Correct Answer\nYou got ' + str(math.floor(200*(1+self.player.fame))) + ' energy'
             self.ids.result_label.color = [0,1,0,1]
             self.player.quiz_reward()
         else:
@@ -222,6 +222,7 @@ class main(App):
     def build(self):
         global gr
         gr = groot()
+        self.icon = 'resc/images/dio.png'
         return gr
 
 if __name__ == '__main__':
