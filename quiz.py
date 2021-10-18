@@ -25,5 +25,21 @@ que_lst = [
     quest('The 3 main types of translators are...',['Assemblers, Compilers and Interpreters','Assemblers, Compilers and Converters','Assemblers, Scripters and Interpreters','Converters, Scripters and Interpreters'],1),
     quest('Assembly language is...',['A small business meeting','A high level language like java','Used for manufacturing automobiles','a low level machine languge'],4),
     quest('What is the smallest unit of measurement used to quantify computer data?',['a birdle','a marble','a bit','a tablespoon'],3),
-    quest('What is an open source, high-level programming language designed to be easy to read and simple to implement?',['Sunmatra','Java','Blocks','Latin'],2)
+    quest('What is an open source, high-level programming language designed to be easy to read and simple to implement?',['Sunmatra','Java','Blocks','Latin'],2),
+    quest('An error in your program which prevents it from running properly is...',['Error report','Bug','Mistake','Virus'],2),
+    quest('One kilobyte is approximately equal to how many memory locations?',['1000','10000','100','100000'],1),
+    quest('JavaScript is the same as Java: ',['True','False'],2),
+    quest('Binary uses how many digits?',['1','4','2','8'],3),
+    quest('How many bits make up one byte?',['4','8','16','32'],2),
+    quest('To focus on the logic and make refinements to a program before translating it into a programming language, a programmer often creates an outline of the program\'s algorithm. What is the term for this type of outline?',['Interpreter','Sketch','Compiler','Pseudocode'],4),
+    quest('Which utility software can protect our personal information or identity?',['Antivirus','Spyware Protection','Firewall','Defragmentation'],2),
+    quest('Which utility program frees up space on the disk by reorganising it?',['Antivirus','Firewall','System Clean Up','Defragmentation'],4),
+    quest('The letter E in binary is?',['01000001','01000101','01000010','01010101'],2),
+    quest('Which generation of computer languages used the LOAD, ADD and STORE codes?',['First','Second','Third','Fourth'],2),
+    quest('Which generation of computers started in the 1950s?',['First','Second','Third','Fourth'],3),
+    quest('Which generation of computer languages includes the SQL(Database Search)?',['First','Second','Third','Fourth'],4),
+    quest('Software that is available but has limitations is called?',['Shareware','Freeware','Open Source','Closed Source'],1),
+    quest('Which of the following lists the evolution of programming languages in the correct order?',['machine, assembler, procedural, non-procedural, object oriented','procedural, non-procedural, object oriented, machine, assembler','machine, procedural, assembler, non-procedural, object oriented','machine, assembler, object oriented, procedural, non procedural'],1),
+    quest('Software that is restricted on it\'s use or modifications is called?',['Shareware','Freeware','Open Source','Closed Source'],4),
+    quest('Which of the following programming language types was created first?',['procedural','machine','object oriented','assembler'],2)
 ]
