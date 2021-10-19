@@ -13,7 +13,7 @@
                 size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.3}
                 on_release:
-                    root.clicked()
+                    root.tap_snd.play()
                     app.root.transition.direction = 'left'
                     if root.acc(): root.starto(); app.root.current = 'game_screen'
                     else: app.root.current = 'acc_screen'
@@ -43,8 +43,8 @@
                 size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.3}
                 on_release:
+                    root.tap_snd.play()
                     root.player.username = root.ids.txinp1.text
-                    root.clicked()
                     root.starto()
                     app.root.transition.direction = 'left'
                     app.root.current = 'game_screen'
@@ -80,6 +80,7 @@
                 pos_hint: {'x':0.83, 'y':0.53}
                 size_hint: 0.15, 0.2
                 on_release:
+                    root.tap_snd.play()
                     root.qz_reset()
                     root.set_que()
                     app.root.current = 'quiz_screen'
@@ -90,6 +91,7 @@
                 size_hint: 0.15, 0.2
                 text: 'daily reward'
                 on_release:
+                    root.new_snd.play()
                     root.dly_reset()
                     root.player.dly_reward()
             
@@ -99,20 +101,27 @@
                 pos_hint: {'x':0.83, 'y':0.05}
                 size_hint: 0.15, 0.2
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'skill_screen'
 
             Button:
                 id: game_next_butt
-                pos_hint: {'x':0.62, 'y':0.05}
-                size_hint: 0.15, 0.2
+                pos_hint: {'x':0.67, 'y':0.05}
+                size_hint: 0.1, 0.2
+                background_normal: 'resc/images/right.png'
+                background_disabled_normal: 'resc/images/black.jpg'
                 on_release:
+                    root.tap_snd.play()
                     root.tempID += 1
             
             Button:
                 id: game_prev_butt
                 pos_hint: {'x':0.27, 'y':0.05}
-                size_hint: 0.15, 0.2
+                size_hint: 0.1, 0.2
+                background_normal: 'resc/images/left.png'
+                background_disabled_normal: 'resc/images/black.jpg'
                 on_release:
+                    root.tap_snd.play()
                     root.tempID -= 1
 
             Button:
@@ -121,6 +130,7 @@
                 pos_hint: {'x':0.05, 'y':0.05}
                 size_hint: 0.15, 0.2
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'creds_screen'
 
             GridLayout:
@@ -163,6 +173,7 @@
                 size_hint: 0.15, 0.2
                 text: 'burn'
                 on_release:
+                    root.burn_snd.play()
                     root.player.burn(root.newID)
                     root.player.energy -= 300
                     app.root.current = 'game_screen'
@@ -173,16 +184,19 @@
                 size_hint: 0.15, 0.2
                 text: 'keep'
                 on_release:
+                    root.lvl_up_snd.play()
                     root.player.lvl_up_card(root.newID)
                     root.player.energy -= 300
                     app.root.current = 'game_screen'
           
             Button:
                 id: rolled_to_game
-                text: 'back'
-                pos_hint: {'x':0.02, 'y':0.86}
-                size_hint: 0.1, 0.1
+                # text: 'back'
+                pos_hint: {'x':0.02, 'y':0.8}
+                size_hint: 0.1, 0.17
+                background_normal: 'resc/images/back.png'
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'game_screen'
 
             GridLayout:
@@ -213,6 +227,9 @@
                 id: opt1
                 pos_hint: {'x':0.25, 'y':0.35}
                 size_hint: 0.2, 0.15
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release: 
                     if root.que.ans==1: root.set_result(1)
                     else: root.set_result(0)
@@ -222,6 +239,9 @@
                 id: opt2
                 pos_hint: {'x':0.62, 'y':0.35}
                 size_hint: 0.2, 0.15
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release: 
                     if root.que.ans==2: root.set_result(1)
                     else: root.set_result(0)
@@ -231,6 +251,9 @@
                 id: opt3
                 pos_hint: {'x':0.25, 'y':0.1}
                 size_hint: 0.2, 0.15
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release: 
                     if root.que.ans==3: root.set_result(1)
                     else: root.set_result(0)
@@ -240,6 +263,9 @@
                 id: opt4
                 pos_hint: {'x':0.62, 'y':0.1}
                 size_hint: 0.2, 0.15
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release: 
                     if root.que.ans==4: root.set_result(1)
                     else: root.set_result(0)
@@ -247,10 +273,12 @@
             
             Button:
                 id: quiz_to_game
-                text: 'back'
-                pos_hint: {'x':0.02, 'y':0.86}
-                size_hint: 0.1, 0.1
+                # text: 'back'
+                pos_hint: {'x':0.02, 'y':0.8}
+                size_hint: 0.1, 0.17
+                background_normal: 'resc/images/back.png'
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'game_screen'
         
             Label:
@@ -269,10 +297,12 @@
         FloatLayout:
             Button:
                 id: result_to_game
-                text: 'back'
-                pos_hint: {'x':0.02, 'y':0.86}
-                size_hint: 0.1, 0.1
+                # text: 'back'
+                pos_hint: {'x':0.02, 'y':0.8}
+                size_hint: 0.1, 0.17
+                background_normal: 'resc/images/back.png'
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'game_screen'
             Label:
                 id: result_label
@@ -291,16 +321,22 @@
 
             Button:
                 id: skill_next_butt
-                pos_hint: {'x':0.62, 'y':0.05}
-                size_hint: 0.15, 0.2
+                pos_hint: {'x':0.67, 'y':0.05}
+                size_hint: 0.1, 0.2
+                background_normal: 'resc/images/right.png'
+                background_disabled_normal: 'resc/images/black.jpg'
                 on_release:
+                    root.tap_snd.play()
                     root.tempID2 += 1
             
             Button:
                 id: skill_prev_butt
                 pos_hint: {'x':0.27, 'y':0.05}
-                size_hint: 0.15, 0.2
+                size_hint: 0.1, 0.2
+                background_normal: 'resc/images/left.png'
+                background_disabled_normal: 'resc/images/black.jpg'
                 on_release:
+                    root.tap_snd.play()
                     root.tempID2 -= 1
 
             Button:
@@ -309,14 +345,17 @@
                 size_hint: 0.15, 0.2
                 text: 'Buy'
                 on_release:
+                    root.lvl_up_snd.play()
                     root.player.buy_skill(root.tempID2)
             
             Button:
                 id: skill_to_game
-                text: 'back'
-                pos_hint: {'x':0.02, 'y':0.86}
-                size_hint: 0.1, 0.1
+                # text: 'back'
+                pos_hint: {'x':0.02, 'y':0.8}
+                size_hint: 0.1, 0.17
+                background_normal: 'resc/images/back.png'
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'game_screen'
 
             GridLayout:
@@ -327,7 +366,6 @@
                 size_hint_y: 0.5
                 Image: 
                     id: skill_card_img
-                    source: 'resc/images/dio.png'
                     allow_stretch: True
                     keep_ratio: False
                 Label:
@@ -345,10 +383,12 @@
         FloatLayout:
             Button:
                 id: creds_to_game
-                text: 'back'
-                pos_hint: {'x':0.02, 'y':0.86}
-                size_hint: 0.1, 0.1
+                # text: 'back'
+                pos_hint: {'x':0.02, 'y':0.8}
+                size_hint: 0.1, 0.17
+                background_normal: 'resc/images/back.png'
                 on_release:
+                    root.tap_snd.play()
                     app.root.current = 'game_screen'
             
             Label:
