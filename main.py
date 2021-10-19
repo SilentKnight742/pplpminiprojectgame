@@ -17,7 +17,13 @@ class groot(ScreenManager):
         self.player = Player()
 
         # loading all the required sounds
-        self.clik_snd = SoundLoader.load('resc/sounds/click.wav')
+        # self.clik_snd = SoundLoader.load('resc/sounds/click.wav')
+        self.tap_snd = SoundLoader.load('resc/sounds/tap.wav')
+        self.success_snd = SoundLoader.load('resc/sounds/success.wav')
+        self.wrong_snd = SoundLoader.load('resc/sounds/wrong.wav')
+        self.lvl_up_snd = SoundLoader.load('resc/sounds/lvl_up.wav')
+        self.burn_snd = SoundLoader.load('resc/sounds/burn.wav')
+        self.new_snd = SoundLoader.load('resc/sounds/new.wav')
 
         # temp var for traversing list of langs of player
         self.tempID = 0
@@ -122,7 +128,7 @@ class groot(ScreenManager):
         # updating skill screen
         if gr.current == 'skill_screen':
             k = skill_lst[self.tempID2]
-            # self.ids.skill_card_img.source = 'resc/images/' + k.img_name
+            self.ids.skill_card_img.source = 'resc/images/' + k.img_name
             self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
             if self.tempID2==0:
                 self.ids.skill_prev_butt.disabled = True
@@ -175,6 +181,7 @@ class groot(ScreenManager):
             self.ids.rolled_to_game.disabled = True
             self.ids.rolled_card_label.text = 'You already have this card'
         else:
+            self.new_snd.play()
             self.ids.keep_butt.disabled = True
             self.ids.burn_butt.disabled = True
             self.ids.rolled_to_game.disabled = False
@@ -196,10 +203,12 @@ class groot(ScreenManager):
 
     def set_result(self,f):
         if f==1:
+            self.success_snd.play()
             self.ids.result_label.text = 'Correct Answer\nYou got ' + str(math.floor(200*(1+self.player.fame))) + ' energy'
             self.ids.result_label.color = [0,1,0,1]
             self.player.quiz_reward()
         else:
+            self.wrong_snd.play()
             self.ids.result_label.text = 'Wrong Answer'
             self.ids.result_label.color = [1,0,0,1]
 
