@@ -23,7 +23,7 @@ class skill:
         self.skill_fame = args[2]
         self.cost = args[3]
 
-          
+high_ranks = 7  
 # higher the tier higher the rarity...like we could select top 5 to 10 langs as high tier cards 
 # and rest normal cards like ruby, scala, php...bleh kon suna hai unke baare me...idk
 # bhot kuch info nikalna padega...
@@ -36,6 +36,7 @@ lang_lst = [
     lang('C#','C#.jpg',20,50),
     lang('R','R.jpg',20,50),
     lang('PHP','PHP.jpg',20,50), 
+    lang('SQL','SQL.jpg',20,50),
     lang('Objective C','ObjectiveC.jpg',20,50),
     lang('Typescript','typescript.jpg',20,50),
     lang('Swift','swift.jpg',20,50),
@@ -69,7 +70,6 @@ skill_lst = [
     skill('Project Management','projectmanagement.jpg',0.5,100),
     skill('Open Source Contributions','opensourcecontributions.jpg',0.5,100),
     skill('Software Development','softwaredev.jpg',0.5,100),
-    skill('Technical Writing','Technical_Writing.jpg',0.5,100),
     skill('Mathematics','mathematics.jpg',0.5,100),
     skill('Problem Solving','problemsolving.jpg',0.5,100),
     skill('Coding','coding.jpg',0.5,100),
