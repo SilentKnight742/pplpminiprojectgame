@@ -37,7 +37,6 @@ que_lst = [
     quest('Which generation of computers started in the 1950s?',['First','Second','Third','Fourth'],3),
     quest('Which generation of computer languages includes the SQL(Database Search)?',['First','Second','Third','Fourth'],4),
     quest('Software that is available but has limitations is called?',['Shareware','Freeware','Open Source','Closed Source'],1),
-    quest('Which of the following lists the evolution of programming languages in the correct order?',['machine, assembler, procedural, non-procedural, object oriented','procedural, non-procedural, object oriented, machine, assembler','machine, procedural, assembler, non-procedural, object oriented','machine, assembler, object oriented, procedural, non procedural'],1),
     quest('Software that is restricted on it\'s use or modifications is called?',['Shareware','Freeware','Open Source','Closed Source'],4),
     quest('Which of the following programming language types was created first?',['procedural','machine','object oriented','assembler'],2),
     quest('Software that allows modification in all cases is called?',['Shareware','Freeware','Open Source','Closed Source'],3),
