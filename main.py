@@ -61,7 +61,7 @@ class groot(ScreenManager):
 
     # the update func is for updating time, player_data file and some info displayed on screen
     def starto(self):
-        Clock.schedule_interval(self.update,0.01)
+        Clock.schedule_interval(self.update,0.005)
         # basically setting the fps ...60 fps ~ 1 frame  / 0.0167 ms ...i think i right...hoefully
         # more like we'll keep updating the file where we store player data and the data we show on screen around 60 times in a sec...
       
@@ -98,22 +98,28 @@ class groot(ScreenManager):
             
             # lang card view
             if len(self.player.langs)!=0:
-                k = self.player.langs[self.player.lang_ind[self.tempID]]
-                self.ids.game_lang_card_img.source = 'resc/images/' + k.img_name
-                self.ids.game_lang_card_stat.text = 'Name: ' + k.name + '\nLevel: ' + str(k.card_lvl) + '\nExp: +' + str(k.card_exp)
-                if self.tempID==0:
-                    self.ids.game_prev_butt.disabled = True
-                else:
-                    self.ids.game_prev_butt.disabled = False
-                if self.tempID==len(self.player.langs)-1:
-                    self.ids.game_next_butt.disabled = True
-                else:
-                    self.ids.game_next_butt.disabled = False
+                try:
+                    k = self.player.langs[self.player.lang_ind[self.tempID]]
+                    self.ids.game_lang_card_img.source = 'resc/images/' + k.img_name
+                    self.ids.game_lang_card_stat.text = 'Name: ' + k.name + '\nLevel: ' + str(k.card_lvl) + '\nExp: +' + str(k.card_exp)
+                    if self.tempID<=0:
+                        self.ids.game_prev_butt.disabled = True
+                    else:
+                        self.ids.game_prev_butt.disabled = False
+                    if self.tempID>=len(self.player.langs)-1:
+                        self.ids.game_next_butt.disabled = True
+                    else:
+                        self.ids.game_next_butt.disabled = False
+                except:
+                    if self.tempID < 0:
+                        self.tempID = 0
+                    elif self.tempID >= len(self.player.lang_ind):
+                        self.tempID = len(self.player.lang_ind) - 1
             else:
                 self.ids.game_prev_butt.disabled = True
                 self.ids.game_next_butt.disabled = True
                 self.ids.game_lang_card_img.source = 'resc/images/no_card.png' 
-                self.ids.game_lang_card_stat.text = 'Try rolling a new card'
+                self.ids.game_lang_card_stat.text = 'You do not have any cards yet, \ntry rolling a new card'
             
             # roll butt
             if self.player.energy < 300:
@@ -122,26 +128,32 @@ class groot(ScreenManager):
                 self.ids.roll_butt.disabled = False
 
             # player stat
-            self.ids.play_stat_window.text = '[b][size=25]' + self.player.username + '[/size][/b]' + '\n\nLevel: ' + str(self.player.lvl) + '\nExp: ' +  str(self.player.exp) + '\nEnergy: ' + str(self.player.energy) + '\nProficiency: ' + str(self.player.pp) + '\nFame: x' + str(self.player.fame)                                                
+            self.ids.play_stat_window.text = '[b][size=40]' + self.player.username + '[/size][/b]' + '\n\nLevel: ' + str(self.player.lvl) + '\nExp: ' +  str(self.player.exp) + '\nEnergy: ' + str(self.player.energy) + '\nProficiency: ' + str(self.player.pp) + '\nFame: x' + str(self.player.fame)                                                
             
 
         # updating skill screen
         if gr.current == 'skill_screen':
-            k = skill_lst[self.tempID2]
-            self.ids.skill_card_img.source = 'resc/images/' + k.img_name
-            self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
-            if self.tempID2==0:
-                self.ids.skill_prev_butt.disabled = True
-            else:
-                self.ids.skill_prev_butt.disabled = False
-            if self.tempID2==len(skill_lst)-1:
-                self.ids.skill_next_butt.disabled = True
-            else: 
-                self.ids.skill_next_butt.disabled = False
-            if self.player.skill_exists(self.tempID2) or self.player.pp<k.cost:
-                self.ids.buy_skill_butt.disabled = True
-            else:
-                self.ids.buy_skill_butt.disabled = False           
+            try:
+                k = skill_lst[self.tempID2]
+                self.ids.skill_card_img.source = 'resc/images/' + k.img_name
+                self.ids.skill_card_stat.text = 'Name: ' + k.name + '\nFame: ' + str(k.skill_fame) + '\nCost: ' + str(k.cost)
+                if self.tempID2<=0:
+                    self.ids.skill_prev_butt.disabled = True
+                else:
+                    self.ids.skill_prev_butt.disabled = False
+                if self.tempID2>=len(skill_lst)-1:
+                    self.ids.skill_next_butt.disabled = True
+                else: 
+                    self.ids.skill_next_butt.disabled = False
+                if self.player.skill_exists(self.tempID2) or self.player.pp<k.cost:
+                    self.ids.buy_skill_butt.disabled = True
+                else:
+                    self.ids.buy_skill_butt.disabled = False 
+            except:
+                if self.tempID2 < 0:
+                    self.tempID2 = 0
+                elif self.tempID2 >= len(skill_lst):
+                    self.tempID2 = len(skill_lst) - 1          
 
 
 
@@ -152,7 +164,8 @@ class groot(ScreenManager):
             pickle.dump(self.player,player_data)
             player_data.close()
         except:
-            print('missed')
+            pass
+            # print('missed')
 
         
 
@@ -174,14 +187,14 @@ class groot(ScreenManager):
 
     def roll(self):
         self.newID = self.player.rng()
-        print(self.newID)
+        # print(self.newID)
         if self.player.lang_exists(self.newID):
             self.ids.burn_butt.disabled = False
             self.ids.keep_butt.disabled = False
             self.ids.rolled_to_game.disabled = True
             self.ids.rolled_card_label.text = 'You already have this card'
         else:
-            self.new_snd.play()
+            self.lvl_up_snd.play()
             self.ids.keep_butt.disabled = True
             self.ids.burn_butt.disabled = True
             self.ids.rolled_to_game.disabled = False
@@ -190,7 +203,7 @@ class groot(ScreenManager):
             self.player.energy -= 300
         k = lang_lst[self.newID]
         self.ids.rolled_card_img.source = 'resc/images/' + k.img_name
-        self.ids.rolled_card_stat.text = 'Name: ' + k.name + '\nLevel: ' + str(k.card_lvl) + '\nExp: +' + str(k.card_exp)
+        self.ids.rolled_card_stat.text = 'Name: ' + k.name + '\nLevel: ' + str(k.card_lvl) + '\nExp: +' + str(k.card_exp) + '\nProficiency: ' + str(k.card_pp)
 
 
     def set_que(self):
