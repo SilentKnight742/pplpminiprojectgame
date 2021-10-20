@@ -38,6 +38,9 @@ class groot(ScreenManager):
         # temp var for current que obj
         self.que = 0
         self.correct = True
+        self.tmr = 20
+        self.tmr_left = self.tmr
+        self.last_tmr_rec = 0
 
         # end of root construtor
 
@@ -62,8 +65,7 @@ class groot(ScreenManager):
     # the update func is for updating time, player_data file and some info displayed on screen
     def starto(self):
         Clock.schedule_interval(self.update,0.005)
-        # basically setting the fps ...60 fps ~ 1 frame  / 0.0167 ms ...i think i right...hoefully
-        # more like we'll keep updating the file where we store player data and the data we show on screen around 60 times in a sec...
+        
       
         # end of starto func
 
@@ -76,7 +78,6 @@ class groot(ScreenManager):
         # updating time for quiz and daily rewards
         t = time.time()
         if self.player.qz_time_left <= 1:
-            pass
             self.ids.quiz_butt.disabled = False                                   
             self.ids.quiz_butt.text = 'Quiz'
         else:
@@ -85,7 +86,7 @@ class groot(ScreenManager):
             self.ids.quiz_butt.disabled = True
             self.ids.quiz_butt.text = str(math.floor(self.player.qz_time_left))
 
-        if self.player.dly_time_left <=0:
+        if self.player.dly_time_left <= 1:
             self.ids.dly_butt.disabled = False                                   
         else:
             self.player.dly_time_left -= (t - self.player.dly_last_time_rec)
@@ -153,7 +154,17 @@ class groot(ScreenManager):
                 if self.tempID2 < 0:
                     self.tempID2 = 0
                 elif self.tempID2 >= len(skill_lst):
-                    self.tempID2 = len(skill_lst) - 1          
+                    self.tempID2 = len(skill_lst) - 1         
+
+        if gr.current == 'quiz_screen':
+            if self.tmr_left <= 1:
+                self.tmr_left = self.tmr
+                gr.current = 'result_screen'
+                self.set_result()
+            else:
+                self.tmr_left -= (t-self.last_tmr_rec)
+                self.last_tmr_rec = t
+             
 
 
 
@@ -213,23 +224,28 @@ class groot(ScreenManager):
         self.ids.opt2.text = self.que.opt[1]
         self.ids.opt3.text = self.que.opt[2]
         self.ids.opt4.text = self.que.opt[3]
+        self.last_tmr_rec = time.time()
 
-    def set_result(self,f):
+    def set_result(self,f=-1):
         if f==1:
             self.success_snd.play()
             self.ids.result_label.text = 'Correct Answer\nYou got ' + str(math.floor(200*(1+self.player.fame))) + ' energy'
             self.ids.result_label.color = [0,1,0,1]
             self.player.quiz_reward()
-        else:
+        elif f==0:
             self.wrong_snd.play()
             self.ids.result_label.text = 'Wrong Answer'
+            self.ids.result_label.color = [1,0,0,1]
+        else:
+            self.wrong_snd.play()
+            self.ids.result_label.text = 'Took too much time'
             self.ids.result_label.color = [1,0,0,1]
 
 
 
-    def clicked(self):
-        if self.clik_snd:
-            self.clik_snd.play()
+    # def clicked(self):
+    #     if self.clik_snd:
+            # self.clik_snd.play()
         # self.player.clicks = (self.player.clicks+1)%20
         # if self.player.clicks%2==0:
         #     self.ids.butt1.background_normal = 'resc/images/groot.png'
