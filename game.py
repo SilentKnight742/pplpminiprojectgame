@@ -77,7 +77,7 @@ class Player:
     def set_lvl(self):
         if self.exp<500:
             self.lvl = 1
-        elif self.exp<100:
+        elif self.exp<1000:
             self.lvl = 2
         elif self.exp<1500:
             self.lvl = 3
