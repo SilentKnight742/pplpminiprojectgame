@@ -1,5 +1,4 @@
 # pplp mini project of aniket, ashutosh, apoorv, biju, atharva and tejaswini
-""" 
 Game Rules:
 * Solve quizzes and redeem daily rewards to earns energy.
 * Roll cards using energy earned to get new language cards to add in your collection.
