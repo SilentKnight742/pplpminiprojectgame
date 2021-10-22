@@ -6,3 +6,5 @@ Game Rules:
 * Use proficiency points to buy new skills, skills help you to get 'fame'. 
 * Fame is multiplier for quiz and daily reward gains, the more fame you have the more you earn energy. 
 * The aim is to collect all cards and level them up and buy all skills. 
+
+Go ahead and install the 'miniPro.apk' file on your android device and give the game a try
