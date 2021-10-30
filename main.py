@@ -38,7 +38,7 @@ class groot(ScreenManager):
         # temp var for current que obj
         self.que = 0
         self.correct = True
-        self.tmr = 20
+        self.tmr = 21
         self.tmr_left = self.tmr
         self.last_tmr_rec = 0
 
@@ -129,7 +129,7 @@ class groot(ScreenManager):
                 self.ids.roll_butt.disabled = False
 
             # player stat
-            self.ids.play_stat_window.text = '[b][size=40]' + self.player.username + '[/size][/b]' + '\n\nLevel: ' + str(self.player.lvl) + '\nExp: ' +  str(self.player.exp) + '\nEnergy: ' + str(self.player.energy) + '\nProficiency: ' + str(self.player.pp) + '\nFame: x' + str(self.player.fame)                                                
+            self.ids.play_stat_window.text = '[b][size=20]' + self.player.username + '[/size][/b]' + '\n\n[size=13]Level: ' + str(self.player.lvl) + '\nExp: ' +  str(self.player.exp) + '\nEnergy: ' + str(self.player.energy) + '\nProficiency: ' + str(self.player.pp) + '\nFame: x' + str(self.player.fame)  + '[/size]'                                             
             
 
         # updating skill screen
@@ -156,15 +156,21 @@ class groot(ScreenManager):
                 elif self.tempID2 >= len(skill_lst):
                     self.tempID2 = len(skill_lst) - 1         
 
+
+        # updating quiz screen
         if gr.current == 'quiz_screen':
             if self.tmr_left <= 1:
-                self.tmr_left = self.tmr
                 gr.current = 'result_screen'
                 self.set_result()
+                self.ids.quiz_timer.text = ''
             else:
                 self.tmr_left -= (t-self.last_tmr_rec)
                 self.last_tmr_rec = t
-             
+                if self.tmr_left < 10:
+                    self.ids.quiz_timer.color = [1,0,0,1]
+                else:
+                    self.ids.quiz_timer.color = [1,1,1,1]
+                self.ids.quiz_timer.text = str(math.floor(self.tmr_left))
 
 
 
@@ -240,7 +246,7 @@ class groot(ScreenManager):
             self.wrong_snd.play()
             self.ids.result_label.text = 'Took too much time'
             self.ids.result_label.color = [1,0,0,1]
-
+        self.tmr_left = self.tmr
 
 
     # def clicked(self):
