@@ -22,12 +22,12 @@ class Player:
         self.skills = {}
         self.skill_ind = []
 
-        self.qz_cd = 5
+        self.qz_cd = 90
         self.qz_time_left = 0
         self.qz_last_time_rec = time.time()
         # qz_time_left = qz_time_left - (time.time() - last_time_rec)
         # if qz_time_left <= 0 then quiz is ready otherwise ded
-        self.dly_cd = 2
+        self.dly_cd = 3600
         self.dly_time_left = 0
         self.dly_last_time_rec = time.time()
         # same logic as qz_cd
