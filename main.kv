@@ -6,12 +6,13 @@
             Button: 
                 id: butt1
                 text: 'start'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                 # text_size: self.size
                 halign: 'center'
                 valign: 'center'
                 font_size: 0.1*self.width
-                size_hint: 0.5,0.17
-                pos_hint: {'x':0.25, 'y':0.3}
+                size_hint: 0.3,0.17
+                pos_hint: {'x':0.35, 'y':0.3}
                 on_release:
                     root.tap_snd.play()
                     app.root.transition.direction = 'left'
@@ -26,6 +27,7 @@
                 id: txinp1
                 text: ''
                 font_size: 0.1*self.width
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                 size_hint: 0.5,0.17
                 pos_hint: {'x':0.25, 'y':0.7}
                 focus: True
@@ -37,6 +39,7 @@
                 id: butt2
                 text: 'login'
                 font_size: 0.1*self.width
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                 # text_size: self.size
                 halign: 'center'
                 valign: 'center'
@@ -56,9 +59,12 @@
             Label:
                 id: play_stat_window
                 color: 1,1,1,1
-                pos_hint: {'x':0.04, 'y':0.32}
+                pos_hint: {'x':0.03, 'y':0.32}
                 size_hint: 0.2, 0.5
                 markup: True
+                text_size: self.size
+                # text_size: self.width, self.height*1.1
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                # canvas.before:
                 #    Color:
                  #       rgba: 1,0,0,1
@@ -69,8 +75,12 @@
             Button:
                 id: roll_butt
                 text: 'Roll'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                 pos_hint: {'x':0.83, 'y':0.75}
                 size_hint: 0.15, 0.2
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.roll()
                     app.root.current = 'rolled_card_screen'
@@ -79,6 +89,10 @@
                 id: quiz_butt
                 pos_hint: {'x':0.83, 'y':0.53}
                 size_hint: 0.15, 0.2
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.tap_snd.play()
                     root.qz_reset()
@@ -90,6 +104,10 @@
                 pos_hint: {'x':0.83, 'y':0.31}
                 size_hint: 0.15, 0.2
                 text: 'daily reward'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.new_snd.play()
                     root.dly_reset()
@@ -98,8 +116,12 @@
             Button:
                 id: skill_butt
                 text: 'skills'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 pos_hint: {'x':0.83, 'y':0.05}
                 size_hint: 0.15, 0.2
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.tap_snd.play()
                     app.root.current = 'skill_screen'
@@ -127,8 +149,12 @@
             Button:
                 id: creds_butt
                 text: 'credits'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 pos_hint: {'x':0.05, 'y':0.05}
                 size_hint: 0.15, 0.2
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.tap_snd.play()
                     app.root.current = 'creds_screen'
@@ -147,6 +173,8 @@
                     id: game_lang_card_stat
                     color: 1,0,1,1
                     text_size: self.size
+                    font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                    text_size: self.size
                     halign: 'center'
                     valign: 'center'
                    # canvas.before:
@@ -163,14 +191,22 @@
         FloatLayout:
             Label:
                 id: rolled_card_label
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 pos_hint: {'x':0.27, 'y':0.86}
                 size_hint: 0.5, 0.1
+                halign: 'center'
+                valign: 'center'
 
             Button:
                 id: burn_butt
                 pos_hint: {'x':0.62, 'y':0.05}
                 size_hint: 0.15, 0.2
                 text: 'burn'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.burn_snd.play()
                     root.player.burn(root.newID)
@@ -182,6 +218,10 @@
                 pos_hint: {'x':0.27, 'y':0.05}
                 size_hint: 0.15, 0.2
                 text: 'keep'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.lvl_up_snd.play()
                     root.player.lvl_up_card(root.newID)
@@ -206,13 +246,13 @@
                 size_hint_y: 0.5
                 Image: 
                     id: rolled_card_img
-                    source: 'dio.png'
                     allow_stretch: True
                     keep_ratio: False
                 Label:
                     id: rolled_card_stat
                     color: 1,0,1,1
-                    text: 'hoho'
+                    text_size: self.size
+                    font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                     text_size: self.size
                     halign: 'center'
                     valign: 'center'
@@ -229,6 +269,8 @@
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 on_release: 
                     if root.que.ans==1: root.set_result(1)
                     else: root.set_result(0)
@@ -241,6 +283,8 @@
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 on_release: 
                     if root.que.ans==2: root.set_result(1)
                     else: root.set_result(0)
@@ -253,6 +297,8 @@
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 on_release: 
                     if root.que.ans==3: root.set_result(1)
                     else: root.set_result(0)
@@ -265,6 +311,8 @@
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 on_release: 
                     if root.que.ans==4: root.set_result(1)
                     else: root.set_result(0)
@@ -279,6 +327,15 @@
                 on_release:
                     root.tap_snd.play()
                     app.root.current = 'game_screen'
+            
+            Label:
+                id: quiz_timer
+                pos_hint: {'x':0.87, 'y':0.8}
+                size_hint: 0.1, 0.17
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
         
             Label:
                 id: que_label
@@ -286,6 +343,8 @@
                 size_hint: 0.7, 0.2
                 color: 1,0,1,1
                 text: 'hoho'
+                text_size: self.size
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                 text_size: self.size
                 halign: 'center'
                 valign: 'center'
@@ -296,7 +355,6 @@
         FloatLayout:
             Button:
                 id: result_to_game
-                # text: 'back'
                 pos_hint: {'x':0.02, 'y':0.8}
                 size_hint: 0.1, 0.17
                 background_normal: 'resc/images/back.png'
@@ -307,8 +365,8 @@
                 id: result_label
                 pos_hint: {'x':0.17, 'y':0.6}
                 size_hint: 0.7, 0.2
-                text: 'hoho'
-                # text_size: self.size
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
                 halign: 'center'
                 valign: 'center'
             
@@ -343,13 +401,16 @@
                 pos_hint: {'x':0.445, 'y':0.05}
                 size_hint: 0.15, 0.2
                 text: 'Buy'
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text_size: self.size
+                halign: 'center'
+                valign: 'center'
                 on_release:
                     root.lvl_up_snd.play()
                     root.player.buy_skill(root.tempID2)
             
             Button:
                 id: skill_to_game
-                # text: 'back'
                 pos_hint: {'x':0.02, 'y':0.8}
                 size_hint: 0.1, 0.17
                 background_normal: 'resc/images/back.png'
@@ -370,7 +431,7 @@
                 Label:
                     id: skill_card_stat
                     color: 1,0,1,1
-                    text: 'hoho'
+                    font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
                     text_size: self.size
                     halign: 'center'
                     valign: 'center'
@@ -394,8 +455,9 @@
                 id: lang_card_stat
                 pos_hint: {'x':0.17, 'y':0.3}
                 size_hint: 0.7, 0.5
-                color: 1,0,1,1
-                text: 'Dev Team:\nAniket Inamdar\nApoorv Chitnis\nAshutosh Mishra\nAtharva Dharmik\nBiju Saji\nTejaswini Joshi'
+                markup: True
+                font_name: 'resc/text/Monoid-Regular-NoCalt.ttf'
+                text: '[b]Dev Team:[/b][color=01A7F7]\nAniket Inamdar\nApoorv Chitnis\nAshutosh Mishra\nAtharva Dharmik\nBiju Saji\nTejaswini Joshi[/color]'
               #  canvas.before:
                #     Color:
                 #        rgba: 0,1,0,1
